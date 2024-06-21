@@ -1,0 +1,12 @@
+services:
+  jupyter:
+    image: quay.io/jupyter/base-notebook:python-3.11
+    container_name: jupyter-local
+    ports:
+      - 8888:8888
+    command: start-notebook.py --IdentityProvider.token=''
+    environment:
+      - DOCKER_STACKS_JUPYTER_CMD=notebook
+    volumes:
+      - ./:/home/jovyan/work
+      - ./overrides.json:/opt/conda/share/jupyter/lab/settings/overrides.json
