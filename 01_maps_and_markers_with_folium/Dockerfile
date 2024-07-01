@@ -1,10 +1,10 @@
-# Use a jupyter lab image and add in requirements
-FROM quay.io/jupyter/base-notebook:python-3.11
+FROM python:3.11
 
-USER jovyan
-WORKDIR /home/jovyan
+WORKDIR /app
 
-COPY --chown=jovyan overrides.json /opt/conda/share/jupyter/lab/settings/overrides.json
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-#COPY --chown=jovyan requirements.txt .
-#RUN pip install -r requirements.txt
+COPY map.py .
+
+CMD ["python", "map.py"]

@@ -1,0 +1,8 @@
+services:
+  python:
+    image: folium:local
+    build: .
+    container_name: folium-local
+    volumes:
+      - ./data.csv/:/app/data.csv
+      - ./output/:/app/output/
